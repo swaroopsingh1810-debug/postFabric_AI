@@ -20,12 +20,12 @@ export default function ResultsSection({
   return (
     <div className="space-y-10">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold">Your 3 Post Options</h2>
+        <h2 className="text-2xl font-extrabold text-neutral-900">Your 3 Post Options</h2>
         <div className="flex gap-4">
           <button
             onClick={onGenerateMore}
             disabled={isGenerating}
-            className="flex items-center gap-2 text-sm text-white/60 hover:text-brand transition-colors disabled:opacity-30"
+            className="flex items-center gap-2 text-sm font-semibold text-neutral-600 hover:text-brand transition-colors disabled:opacity-30"
           >
             {isGenerating ? (
               <Loader2 className="w-4 h-4 animate-spin" />
@@ -36,7 +36,7 @@ export default function ResultsSection({
           </button>
           <button
             onClick={onStartOver}
-            className="flex items-center gap-2 text-sm text-white/60 hover:text-red-400 transition-colors"
+            className="flex items-center gap-2 text-sm font-semibold text-neutral-600 hover:text-red-600 transition-colors"
           >
             <Trash2 className="w-4 h-4" />
             Start Over

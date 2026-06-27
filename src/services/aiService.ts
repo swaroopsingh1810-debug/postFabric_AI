@@ -9,6 +9,7 @@ export interface PostContent {
   hashtags: string;
   image_prompt: string;
   imageUrl?: string;
+  imageError?: boolean;
 }
 
 export async function generatePosts(
@@ -106,3 +107,51 @@ export async function generateImage(prompt: string, platform: string): Promise<s
     throw error;
   }
 }
+
+export function getVibrantFallbackImage(prompt: string, index: number): string {
+  const combined = prompt.toLowerCase();
+  
+  // High-quality, extremely reliable direct Unsplash CDN URLs that never fail
+  const techImages = [
+    "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80", // Abstract vibrant green waves
+    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80", // Digital matrix code tech
+    "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80"  // Elegant workspace tech
+  ];
+
+  const businessImages = [
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", // Analytics, charts and marketing
+    "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80", // Modern meeting success
+    "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=800&q=80"  // Creative office strategy
+  ];
+
+  const creativeImages = [
+    "https://images.unsplash.com/photo-1542744094-3f11267b1123?auto=format&fit=crop&w=800&q=80", // Designers at work
+    "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80", // Abstract creative painting
+    "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&w=800&q=80"  // Creative post-its board
+  ];
+
+  const teamImages = [
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80", // Dynamic creative team
+    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80", // Happy teamwork success
+    "https://images.unsplash.com/photo-1556761175-b813d53a9628?auto=format&fit=crop&w=800&q=80"  // Office collaboration
+  ];
+
+  const techKeywords = ["ai", "tech", "software", "code", "data", "robot", "algorithm", "digital", "system", "program", "developer", "machine"];
+  const businessKeywords = ["market", "sale", "growth", "chart", "business", "lead", "strategy", "revenue", "roi", "product", "client", "customer"];
+  const creativeKeywords = ["create", "design", "brand", "style", "art", "media", "social", "logo", "video", "content", "aesthetic", "post"];
+
+  if (techKeywords.some(kw => combined.includes(kw))) {
+    return techImages[index % techImages.length];
+  }
+  
+  if (businessKeywords.some(kw => combined.includes(kw))) {
+    return businessImages[index % businessImages.length];
+  }
+
+  if (creativeKeywords.some(kw => combined.includes(kw))) {
+    return creativeImages[index % creativeImages.length];
+  }
+
+  return teamImages[index % teamImages.length];
+}
+

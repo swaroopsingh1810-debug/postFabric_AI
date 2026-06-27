@@ -44,7 +44,7 @@ const PostCard: React.FC<PostCardProps> = ({ post, index, onShowToast }) => {
   return (
     <div className="glass-card flex flex-col h-full group">
       {/* Top Section: Image */}
-      <div className="relative aspect-square sm:aspect-video md:aspect-square overflow-hidden bg-white/5">
+      <div className="relative aspect-square sm:aspect-video md:aspect-square overflow-hidden bg-neutral-100">
         {post.imageUrl ? (
           <img
             src={post.imageUrl}
@@ -54,29 +54,37 @@ const PostCard: React.FC<PostCardProps> = ({ post, index, onShowToast }) => {
           />
         ) : (
           <div className="w-full h-full skeleton flex items-center justify-center">
-            <div className="text-white/20 text-sm font-medium">Generating Visual...</div>
+            <div className="text-neutral-400 text-sm font-semibold">Generating Visual...</div>
           </div>
         )}
-        <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+        <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-1.5">
           <span className="text-xs font-semibold text-white/90">Option {index + 1}</span>
+          {post.imageError && (
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          )}
         </div>
+        {post.imageError && (
+          <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10">
+            <span className="text-[10px] font-bold text-emerald-400 tracking-wide uppercase">Vibrant Fallback Asset</span>
+          </div>
+        )}
       </div>
 
       {/* Middle Section: Content */}
       <div className="p-5 flex-grow space-y-4">
         <div>
           <span className="text-[10px] font-bold text-brand uppercase tracking-widest block mb-1">Hook</span>
-          <p className="text-white font-bold leading-snug">{post.hook}</p>
+          <p className="text-neutral-900 font-bold leading-snug">{post.hook}</p>
         </div>
         
         <div>
           <span className="text-[10px] font-bold text-brand uppercase tracking-widest block mb-1">Body</span>
-          <p className="text-white/80 text-sm leading-relaxed">{post.body}</p>
+          <p className="text-neutral-700 text-sm leading-relaxed">{post.body}</p>
         </div>
 
         <div>
           <span className="text-[10px] font-bold text-brand uppercase tracking-widest block mb-1">CTA</span>
-          <p className="text-white italic text-sm">{post.cta}</p>
+          <p className="text-neutral-800 italic text-sm font-medium">{post.cta}</p>
         </div>
 
         <div className="pt-2">

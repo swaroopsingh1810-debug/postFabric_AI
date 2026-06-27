@@ -52,11 +52,11 @@ export default function InputSection({
               value={platform}
               onChange={(e) => setPlatform(e.target.value)}
             >
-              <option value="Instagram" className="bg-[#171717] text-white">Instagram</option>
-              <option value="LinkedIn" className="bg-[#171717] text-white">LinkedIn</option>
-              <option value="Facebook" className="bg-[#171717] text-white">Facebook</option>
+              <option value="Instagram" className="bg-white text-neutral-900">Instagram</option>
+              <option value="LinkedIn" className="bg-white text-neutral-900">LinkedIn</option>
+              <option value="Facebook" className="bg-white text-neutral-900">Facebook</option>
             </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-white/50">
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-neutral-400">
               <ChevronDown className="w-4 h-4" />
             </div>
           </div>
@@ -70,12 +70,12 @@ export default function InputSection({
               value={goal}
               onChange={(e) => setGoal(e.target.value)}
             >
-              <option value="Brand Awareness" className="bg-[#171717] text-white">Brand Awareness</option>
-              <option value="Drive Sales" className="bg-[#171717] text-white">Drive Sales</option>
-              <option value="Build Trust" className="bg-[#171717] text-white">Build Trust</option>
-              <option value="Educate Audience" className="bg-[#171717] text-white">Educate Audience</option>
+              <option value="Brand Awareness" className="bg-white text-neutral-900">Brand Awareness</option>
+              <option value="Drive Sales" className="bg-white text-neutral-900">Drive Sales</option>
+              <option value="Build Trust" className="bg-white text-neutral-900">Build Trust</option>
+              <option value="Educate Audience" className="bg-white text-neutral-900">Educate Audience</option>
             </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-white/50">
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-neutral-400">
               <ChevronDown className="w-4 h-4" />
             </div>
           </div>
@@ -89,12 +89,12 @@ export default function InputSection({
               value={tone}
               onChange={(e) => setTone(e.target.value)}
             >
-              <option value="Professional" className="bg-[#171717] text-white">Professional</option>
-              <option value="Casual" className="bg-[#171717] text-white">Casual</option>
-              <option value="Bold" className="bg-[#171717] text-white">Bold</option>
-              <option value="Inspirational" className="bg-[#171717] text-white">Inspirational</option>
+              <option value="Professional" className="bg-white text-neutral-900">Professional</option>
+              <option value="Casual" className="bg-white text-neutral-900">Casual</option>
+              <option value="Bold" className="bg-white text-neutral-900">Bold</option>
+              <option value="Inspirational" className="bg-white text-neutral-900">Inspirational</option>
             </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-white/50">
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-neutral-400">
               <ChevronDown className="w-4 h-4" />
             </div>
           </div>

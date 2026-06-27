@@ -1,39 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --color-brand: #22c55e;
-  --color-dark-bg: #0a0a0a;
-  --color-dark-card: #171717;
+  --color-brand: #16a34a; /* A highly vibrant and readable green for light backgrounds */
+  --color-light-bg: #f4f6f9;
+  --color-light-card: #ffffff;
 }
 
 @layer base {
   body {
-    @apply bg-dark-bg text-white font-sans antialiased;
+    @apply bg-light-bg text-neutral-900 font-sans antialiased;
   }
 }
 
 .glass-card {
-  @apply bg-dark-card border border-white/10 rounded-2xl overflow-hidden;
+  @apply bg-white/40 backdrop-blur-md border border-white/40 rounded-3xl shadow-xl shadow-neutral-200/30 overflow-hidden transition-all duration-300;
 }
 
 .btn-primary {
-  @apply bg-brand hover:bg-green-600 text-black font-semibold py-3 px-6 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2;
+  @apply bg-brand hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-green-600/20 hover:shadow-green-600/30 hover:-translate-y-0.5 active:translate-y-0;
 }
 
 .btn-outline {
-  @apply border border-brand text-brand hover:bg-brand/10 font-medium py-2 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2;
+  @apply border border-neutral-300 text-neutral-700 hover:bg-neutral-50 hover:border-neutral-400 font-semibold py-2.5 px-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2;
 }
 
 .input-field {
-  @apply w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-brand/50 transition-all;
+  @apply w-full bg-white/80 backdrop-blur-md border border-neutral-300/80 rounded-xl px-4 py-3 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 transition-all shadow-sm;
 }
 
 .label-text {
-  @apply block text-sm font-medium text-white/60 mb-2;
+  @apply block text-sm font-semibold text-neutral-700 mb-2;
 }
 
 .skeleton {
-  @apply bg-white/5 animate-pulse rounded-xl;
+  @apply bg-neutral-200/60 animate-pulse rounded-xl;
 }
+

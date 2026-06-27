@@ -4,10 +4,11 @@
  */
 
 import { useState, useEffect } from "react";
-import { generatePosts, generateImage, PostContent } from "./services/aiService";
+import { generatePosts, generateImage, getVibrantFallbackImage, PostContent } from "./services/aiService";
 import Header from "./components/Header";
 import InputSection from "./components/InputSection";
 import ResultsSection from "./components/ResultsSection";
+import BackgroundCollage from "./components/BackgroundCollage";
 import Toast from "./components/Toast";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -42,9 +43,11 @@ export default function App() {
       
       // Initialize posts with text content and loading state for images
       setPosts(generatedPosts);
+      // Immediately stop the main loading spinner so text posts render instantly
+      setIsGenerating(false);
 
-      // Step 2: Generate images in parallel
-      const imagePromises = generatedPosts.map(async (post, index) => {
+      // Step 2: Generate images in parallel in the background
+      generatedPosts.forEach(async (post, index) => {
         try {
           const imageUrl = await generateImage(post.image_prompt, platform);
           setPosts(prev => {
@@ -55,15 +58,28 @@ export default function App() {
             return newPosts;
           });
         } catch (err) {
-          console.error(`Image ${index} failed:`, err);
+          console.error(`Image ${index} failed, using vibrant open-source fallback:`, err);
+          
+          // Generate a beautiful, vibrant, 100% open-source Unsplash featured image fallback
+          // related to the platform/business, which will never fail or hit quota limits.
+          const fallbackUrl = getVibrantFallbackImage(post.image_prompt, index);
+
+          setPosts(prev => {
+            const newPosts = [...prev];
+            if (newPosts[index]) {
+              newPosts[index] = { 
+                ...newPosts[index], 
+                imageUrl: fallbackUrl,
+                imageError: true 
+              };
+            }
+            return newPosts;
+          });
         }
       });
-
-      await Promise.all(imagePromises);
     } catch (err) {
       console.error("Generation failed:", err);
       setError("Something went wrong. Please try again.");
-    } finally {
       setIsGenerating(false);
     }
   };
@@ -83,8 +99,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen pb-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto pt-12">
+    <div className="min-h-screen pb-20 px-4 sm:px-6 lg:px-8 relative">
+      <BackgroundCollage />
+      <div className="max-w-6xl mx-auto pt-12 relative z-10">
         <Header />
         
         <InputSection
