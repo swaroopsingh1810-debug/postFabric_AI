@@ -1,4 +1,4 @@
-import { Loader2 } from "lucide-react";
+import { Loader2, ChevronDown } from "lucide-react";
 
 interface InputSectionProps {
   businessDescription: string;
@@ -46,43 +46,58 @@ export default function InputSection({
 
         <div>
           <label className="label-text">Platform</label>
-          <select
-            className="input-field appearance-none cursor-pointer"
-            value={platform}
-            onChange={(e) => setPlatform(e.target.value)}
-          >
-            <option value="Instagram">Instagram</option>
-            <option value="LinkedIn">LinkedIn</option>
-            <option value="Facebook">Facebook</option>
-          </select>
+          <div className="relative">
+            <select
+              className="input-field appearance-none cursor-pointer pr-10"
+              value={platform}
+              onChange={(e) => setPlatform(e.target.value)}
+            >
+              <option value="Instagram" className="bg-[#171717] text-white">Instagram</option>
+              <option value="LinkedIn" className="bg-[#171717] text-white">LinkedIn</option>
+              <option value="Facebook" className="bg-[#171717] text-white">Facebook</option>
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-white/50">
+              <ChevronDown className="w-4 h-4" />
+            </div>
+          </div>
         </div>
 
         <div>
           <label className="label-text">Content Goal</label>
-          <select
-            className="input-field appearance-none cursor-pointer"
-            value={goal}
-            onChange={(e) => setGoal(e.target.value)}
-          >
-            <option value="Brand Awareness">Brand Awareness</option>
-            <option value="Drive Sales">Drive Sales</option>
-            <option value="Build Trust">Build Trust</option>
-            <option value="Educate Audience">Educate Audience</option>
-          </select>
+          <div className="relative">
+            <select
+              className="input-field appearance-none cursor-pointer pr-10"
+              value={goal}
+              onChange={(e) => setGoal(e.target.value)}
+            >
+              <option value="Brand Awareness" className="bg-[#171717] text-white">Brand Awareness</option>
+              <option value="Drive Sales" className="bg-[#171717] text-white">Drive Sales</option>
+              <option value="Build Trust" className="bg-[#171717] text-white">Build Trust</option>
+              <option value="Educate Audience" className="bg-[#171717] text-white">Educate Audience</option>
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-white/50">
+              <ChevronDown className="w-4 h-4" />
+            </div>
+          </div>
         </div>
 
         <div>
           <label className="label-text">Tone</label>
-          <select
-            className="input-field appearance-none cursor-pointer"
-            value={tone}
-            onChange={(e) => setTone(e.target.value)}
-          >
-            <option value="Professional">Professional</option>
-            <option value="Casual">Casual</option>
-            <option value="Bold">Bold</option>
-            <option value="Inspirational">Inspirational</option>
-          </select>
+          <div className="relative">
+            <select
+              className="input-field appearance-none cursor-pointer pr-10"
+              value={tone}
+              onChange={(e) => setTone(e.target.value)}
+            >
+              <option value="Professional" className="bg-[#171717] text-white">Professional</option>
+              <option value="Casual" className="bg-[#171717] text-white">Casual</option>
+              <option value="Bold" className="bg-[#171717] text-white">Bold</option>
+              <option value="Inspirational" className="bg-[#171717] text-white">Inspirational</option>
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-white/50">
+              <ChevronDown className="w-4 h-4" />
+            </div>
+          </div>
         </div>
 
         <div className="md:flex md:items-end">
