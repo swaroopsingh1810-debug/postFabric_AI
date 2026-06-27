@@ -62,7 +62,7 @@ export default function App() {
           
           // Generate a beautiful, vibrant, 100% open-source Unsplash featured image fallback
           // related to the platform/business, which will never fail or hit quota limits.
-          const fallbackUrl = getVibrantFallbackImage(post.image_prompt, index);
+          const fallbackUrl = getVibrantFallbackImage(post, index);
 
           setPosts(prev => {
             const newPosts = [...prev];

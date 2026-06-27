@@ -42,9 +42,9 @@ const PostCard: React.FC<PostCardProps> = ({ post, index, onShowToast }) => {
   };
 
   return (
-    <div className="glass-card flex flex-col h-full group">
+    <div className="glass-card flex flex-col min-h-[640px] h-full group">
       {/* Top Section: Image */}
-      <div className="relative aspect-square sm:aspect-video md:aspect-square overflow-hidden bg-neutral-100">
+      <div className="relative aspect-square sm:aspect-video md:aspect-square overflow-hidden bg-neutral-100 flex-shrink-0">
         {post.imageUrl ? (
           <img
             src={post.imageUrl}
@@ -71,29 +71,31 @@ const PostCard: React.FC<PostCardProps> = ({ post, index, onShowToast }) => {
       </div>
 
       {/* Middle Section: Content */}
-      <div className="p-5 flex-grow space-y-4">
-        <div>
-          <span className="text-[10px] font-bold text-brand uppercase tracking-widest block mb-1">Hook</span>
-          <p className="text-neutral-900 font-bold leading-snug">{post.hook}</p>
-        </div>
-        
-        <div>
-          <span className="text-[10px] font-bold text-brand uppercase tracking-widest block mb-1">Body</span>
-          <p className="text-neutral-700 text-sm leading-relaxed">{post.body}</p>
+      <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
+        <div className="space-y-4">
+          <div>
+            <span className="text-[10px] font-bold text-brand uppercase tracking-widest block mb-1">Hook</span>
+            <p className="text-neutral-900 font-bold leading-snug">{post.hook}</p>
+          </div>
+          
+          <div>
+            <span className="text-[10px] font-bold text-brand uppercase tracking-widest block mb-1">Body</span>
+            <p className="text-neutral-700 text-sm leading-relaxed">{post.body}</p>
+          </div>
+
+          <div>
+            <span className="text-[10px] font-bold text-brand uppercase tracking-widest block mb-1">CTA</span>
+            <p className="text-neutral-800 italic text-sm font-medium">{post.cta}</p>
+          </div>
         </div>
 
-        <div>
-          <span className="text-[10px] font-bold text-brand uppercase tracking-widest block mb-1">CTA</span>
-          <p className="text-neutral-800 italic text-sm font-medium">{post.cta}</p>
-        </div>
-
-        <div className="pt-2">
+        <div className="pt-2 border-t border-neutral-100">
           <p className="text-brand text-xs font-medium">{post.hashtags}</p>
         </div>
       </div>
 
       {/* Bottom Section: Actions */}
-      <div className="p-5 pt-0 grid grid-cols-2 gap-3">
+      <div className="p-5 pt-0 grid grid-cols-2 gap-3 mt-auto flex-shrink-0">
         <button onClick={handleCopy} className="btn-outline text-xs py-2 px-2">
           {isCopied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
           Copy Caption
